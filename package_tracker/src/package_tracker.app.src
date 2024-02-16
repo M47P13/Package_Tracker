@@ -1,8 +1,8 @@
-{application, tracker_draft,
+{application, package_tracker,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, {tracker_draft_app, []}},
+  {mod, {package_tracker_app, []}},
   {applications,
    [kernel,
     stdlib

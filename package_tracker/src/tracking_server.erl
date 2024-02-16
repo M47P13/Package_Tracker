@@ -6,7 +6,7 @@
 %%        Creative Commons Attribution 4.0 International License</a>
 %%
 %%
--module(gen_server_template).
+-module(tracking_server).
 -behaviour(gen_server).
 
 %% Only include the eunit testing library
@@ -22,6 +22,8 @@
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2,
          terminate/2, code_change/3]).
+
+-define(SERVER, ?MODULE).
 
 
 %%%===================================================================
@@ -64,7 +66,45 @@ start(Registration_type,Name,Args) ->
 -spec stop() -> {ok}|{error, term()}.
 stop() -> gen_server:call(?MODULE, stop).
 
-%% Any other API functions go here.
+%%--------------------------------------------------------------------
+%% @doc
+%% transfer(Location_id, Package_id)
+%% Updates the associated Location_id of the given Package_id.
+%% 
+%% 
+%% delivered(Package_id)
+%% Moves the given Package_id to delivered_b, recording there the package_id, 
+%% last known Location_id, and geolocation of delivery, if possible.
+%% 
+%% 
+%% request(Package_id)
+%% Returns the Geoloctaton(aka {Lat, Long}) for a given Package_id
+%% 
+%% 
+%% update(Location_id, Geolocation)
+%% Updates the Geolocation(aka {Lat,Long}) for a  given Location_id
+%%
+%%
+%% @end
+%%--------------------------------------------------------------------
+-type geolocation() :: {float(), float()}|nil.
+-type uuid() :: string().
+
+-spec transfer(uuid(), uuid()) -> ok|error.
+transfer(Location_id, Package_id) ->
+    ok.
+
+-spec delivered(uuid()) -> ok|error.
+delivered(Package_id) ->
+    ok.
+
+-spec request(uuid()) -> {ok, geolocation()}|{error, nil}.
+request(Package_id) ->
+    ok.
+
+-spec update(uuid(), geolocation()) -> ok.
+update(Location_id, Geolocation) ->
+    ok.
 
 %%%===================================================================
 %%% gen_server callbacks
@@ -161,4 +201,8 @@ code_change(_OldVsn, State, _Extra) ->
 %%
 %% Unit tests go here. 
 %%
+terminate_test_() ->
+    [
+        ?_assertEqual(terminate(test, []), ok)  % fake test
+    ].
 -endif.

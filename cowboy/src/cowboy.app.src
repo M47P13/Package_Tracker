@@ -1,8 +1,8 @@
-{application, cowboy_draft,
+{application, cowboy,
  [{description, "An OTP application"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, {cowboy_draft_app, []}},
+  {mod, {cowboy_app, []}},
   {applications,
    [kernel,
     stdlib

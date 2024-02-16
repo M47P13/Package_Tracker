@@ -1,16 +1,16 @@
 %%%-------------------------------------------------------------------
-%% @doc cowboy_draft public API
+%% @doc cowboy public API
 %% @end
 %%%-------------------------------------------------------------------
 
--module(cowboy_draft_app).
+-module(cowboy_app).
 
 -behaviour(application).
 
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    Dispatch = cowboy_router:compile([
+        Dispatch = cowboy_router:compile([
         {'_',
             [ 
                 {"/", default_page_h, []},
@@ -23,7 +23,7 @@ start(_StartType, _StartArgs) ->
             [{port, 8080}], % will add real port in the future
             #{env => #{dispatch => Dispatch}}
         ),
-        cowboy_draft_sup:start_link().
+        cowboy_sup:start_link().
 
 stop(_State) ->
     ok.

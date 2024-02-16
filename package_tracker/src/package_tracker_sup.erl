@@ -1,9 +1,9 @@
 %%%-------------------------------------------------------------------
-%% @doc cowboy_draft top level supervisor.
+%% @doc package_tracker top level supervisor.
 %% @end
 %%%-------------------------------------------------------------------
 
--module(cowboy_draft_sup).
+-module(package_tracker_sup).
 
 -behaviour(supervisor).
 
