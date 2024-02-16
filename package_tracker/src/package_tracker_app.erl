@@ -1,16 +1,16 @@
 %%%-------------------------------------------------------------------
-%% @doc tracker_draft public API
+%% @doc package_tracker public API
 %% @end
 %%%-------------------------------------------------------------------
 
--module(tracker_draft_app).
+-module(package_tracker_app).
 
 -behaviour(application).
 
 -export([start/2, stop/1]).
 
 start(_StartType, _StartArgs) ->
-    tracker_draft_sup:start_link().
+    package_tracker_sup:start_link().
 
 stop(_State) ->
     ok.

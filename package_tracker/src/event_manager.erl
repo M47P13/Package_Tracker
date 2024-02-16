@@ -19,7 +19,7 @@
 
 %%% Created : 24 October 2022 by Lee Barney <barney.cit@gmail.com>
 %%%-------------------------------------------------------------------
--module(gen_event_template).
+-module(event_manager).
 -behaviour(gen_event).
 
 
@@ -60,7 +60,7 @@ init(Start_info) ->
 %% @end
 %%--------------------------------------------------------------------
 handle_info(Info, State) ->
-    {ok,StateData}.
+    {ok,stateData}. % was {ok,StateData}.
 
 %%--------------------------------------------------------------------
 %% @doc
@@ -72,7 +72,7 @@ handle_info(Info, State) ->
 %%--------------------------------------------------------------------
 handle_call(Request,State)->
     Response = [],
-    {ok,Response,NewState}.
+    {ok,Response,newState}. % was {ok,Response,NewState}.
 
 %%--------------------------------------------------------------------
 %% @doc
@@ -95,4 +95,21 @@ handle_event(Message,State) ->
 %%
 %% Unit tests go here. 
 %%
+
+handle_info_test_() ->
+    [
+        ?_assertEqual(handle_info(info, state), {ok,stateData})  % fake test
+        
+    ].
+
+handle_call_test_() ->
+    [
+        
+    ].
+
+handle_event_test_() ->
+    [
+
+    ].
+    
 -endif.
